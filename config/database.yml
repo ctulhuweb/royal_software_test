@@ -1,0 +1,23 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: royal_software_test_development
+  host: localhost
+  port: 5432
+  username: postgres
+  password: postgres
+
+test:
+  <<: *default
+  database: royal_software_test_test
+
+production:
+  <<: *default
+  database: royal_software_test_production
+  username: royal_software_test
+  password: <%= ENV['ROYAL_SOFTWARE_TEST_DATABASE_PASSWORD'] %>
